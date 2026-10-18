@@ -1,0 +1,21 @@
+[package]
+name = "snake-mobile"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+macroquad = "0.4"  # simple 2D game library: window, drawing, input, on desktop and Android
+
+# Settings for the Android app, read by the APK build tool (cargo-quad-apk).
+# The build environment itself is described in android/Dockerfile.
+[package.metadata.android]
+label = "Snake"                            # the name shown under the app icon
+fullscreen = true
+build_targets = ["aarch64-linux-android"]  # 64-bit ARM: practically every phone from the last years
+
+[package.metadata.android.activity_attributes]
+"android:screenOrientation" = "userLandscape"  # the field is wide, so play sideways
+"android:exported" = "true"  # required since Android 12: lets the launcher start the app
+# Since Android 16, apps that target it get "predictive back", and the back button
+# no longer arrives as a key press. Opting out lets the game see it as KeyCode::Back.
+"android:enableOnBackInvokedCallback" = "false"

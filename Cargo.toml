@@ -1,0 +1,9 @@
+# Cargo.toml is Rust's equivalent of Maven's pom.xml / Gradle's build.gradle.
+[package]
+name = "snake"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+crossterm = "0.29"  # terminal control: raw keyboard input, cursor moves, colors
+rand = "0.10"       # random numbers (for placing food)
